@@ -1,0 +1,42 @@
+import java.awt.Button;
+import java.awt.FlowLayout;
+import java.awt.Frame;
+import java.awt.Label;
+import java.awt.TextField;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+public class AashikaQuestion1  extends Frame{
+	
+	public AashikaQuestion1() {
+		setTitle("AWT User Interface");
+        setSize(400, 300);
+        setLayout(new FlowLayout());
+
+        Label label = new Label("Welcome to My Application");
+        TextField textField = new TextField(20);
+        Button button = new Button("Submit");
+
+        add(label);
+        add(textField);
+        add(button);
+        
+        // Event handling to close the frame
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                dispose();
+            }
+        });
+
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+
+	}
+
+	public static void main(String[] args) {
+		new AashikaQuestion1();
+
+	}
+
+}

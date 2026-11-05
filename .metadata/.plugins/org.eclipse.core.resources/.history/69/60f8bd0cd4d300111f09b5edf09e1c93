@@ -1,0 +1,117 @@
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class RegistrartionForm extends JFrame implements ActionListener{
+	
+	 JTextField idtxt, nametxt, emailtxt, addresstxt, contacttxt, citytxt;
+	    JRadioButton male, female;
+	    JComboBox<String> country;
+	    JButton submit;
+	    JLabel result;
+	
+	public RegistrartionForm() {
+		 setTitle("Student Registration Form");
+	        setSize(700, 600);
+	        setLayout(new GridLayout(10, 2, 10, 10));
+
+	        add(new JLabel("Student ID:"));
+	        idtxt = new JTextField();
+	        idtxt.setBounds(20, 20, 100, 20);;
+	        add(idtxt);
+
+	        add(new JLabel("Name:"));
+	        nametxt = new JTextField();
+	        add(nametxt);
+
+	        add(new JLabel("Email:"));
+	        emailtxt = new JTextField();
+	        add(emailtxt);
+
+	        add(new JLabel("Address:"));
+	        addresstxt = new JTextField();
+	        add(addresstxt);
+
+	        add(new JLabel("Contact:"));
+	        contacttxt = new JTextField();
+	        add(contacttxt);
+
+	        add(new JLabel("City:"));
+	        citytxt = new JTextField();
+	        add(citytxt);
+
+	        add(new JLabel("Country:"));
+	        String countries[] = {"Nepal", "India", "China", "USA", "Japan"};
+	        country = new JComboBox<>(countries);
+	        add(country);
+
+	        add(new JLabel("Gender:"));
+	        JPanel genderPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+	        male = new JRadioButton("Male");
+	        female = new JRadioButton("Female");
+
+	        ButtonGroup group = new ButtonGroup();
+	        group.add(male);
+	        group.add(female);
+
+	        genderPanel.add(male);
+	        genderPanel.add(female);
+	        add(genderPanel);
+
+	        add(new JLabel(""));
+	        submit = new JButton("Submit");
+	        submit.addActionListener(this);
+	        add(submit);
+
+	        add(new JLabel("Student Information:"));
+	        result = new JLabel("Enter details and click Submit");
+	        add(result);
+
+	        setDefaultCloseOperation(EXIT_ON_CLOSE);
+	        setLocationRelativeTo(null);
+	        setVisible(true);
+	    }
+
+	public static void main(String[] args) {
+		new RegistrartionForm();
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		  String gender = "Not selected";
+
+	        if (male.isSelected())
+	            gender = "Male";
+	        else if (female.isSelected())
+	            gender = "Female";
+
+	        String info = "<html>ID: " + idtxt.getText()
+	                + "<br>Name: " + nametxt.getText()
+	                + "<br>Email: " + emailtxt.getText()
+	                + "<br>Address: " + addresstxt.getText()
+	                + "<br>Contact: " + contacttxt.getText()
+	                + "<br>City: " + citytxt.getText()
+	                + "<br>Country: " + country.getSelectedItem()
+	                + "<br>Gender: " + gender + "</html>";
+
+	        JOptionPane.showMessageDialog(this, info,
+	                "Student Information", JOptionPane.INFORMATION_MESSAGE);
+	}
+
+}

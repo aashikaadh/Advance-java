@@ -1,0 +1,13 @@
+
+public class Question9 {
+	
+	public Question9() {
+		
+	}
+
+	public static void main(String[] args) {
+	new Question9();
+
+	}
+
+}

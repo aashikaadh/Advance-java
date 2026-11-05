@@ -1,0 +1,160 @@
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class SwingComponentDemo extends JFrame {
+//we are creating a registration from for it student  //ctr+m menu bar aauxa janxa
+	// References
+	JLabel firstlbl, lastlbl, emaillbl, genderlbl, addresslbl, sublbl, programlbl, aboutlbl;
+	JTextField firsttxt, lasttxt, emailtxt, addresstxt;
+	JRadioButton malebtn, femalebtn;
+	JCheckBox java, python, cplusplus;
+	JComboBox<String> programcheck;
+	JTextArea abouttxt;
+	JButton submitbtn;
+
+	public SwingComponentDemo() {// default constructor
+		// configuration the jframe using constructor
+
+		setTitle("Registration");// gives the title to jframe
+//		setSize(400, 600);//300 px 500 px length and breadth
+		setResizable(false); // fixed size of jframe
+		setBounds(500, 100, 400, 600); // x=1100,y=200, width=400, height=600
+		setLayout(null);// by default layout is borderlayout
+		// Create components and add to some position
+
+		
+		
+		
+		
+		
+		firstlbl = new JLabel("First Name:");// object memory ma store hunxa but reference store hudina
+		firstlbl.setBounds(20, 20, 100, 20);// x=20,y=20,width=200, height=20
+		add(firstlbl); // added to jframe
+
+		// adding firsttxt
+		firsttxt = new JTextField(20);// 20 character
+		firsttxt.setBounds(120, 20, 200, 20);
+		add(firsttxt);
+		
+		//adding lastlbl
+		lastlbl = new JLabel("Last Name:");// object memory ma store hunxa but reference store hudina
+		lastlbl.setBounds(20, 60, 100, 20);// x=20,y=20,width=200, height=20
+		add(lastlbl); // added to jframe
+
+		
+		// adding lasttxt
+				lasttxt = new JTextField(20);// 20 character
+				lasttxt.setBounds(120, 60, 200, 20);
+				add(lasttxt);
+				
+				//adding email
+				emaillbl = new JLabel("Email:");// object memory ma store hunxa but reference store hudina
+				emaillbl.setBounds(20, 100, 100, 20);// x=20,y=20,width=200, height=20
+				add(emaillbl); // added to jframe
+
+				// adding emailtxt
+				emailtxt = new JTextField(20);// 20 character
+				emailtxt.setBounds(120, 100, 200, 20);
+				add(emailtxt);
+				
+				//adding radiobuttons for gender
+				ButtonGroup group=new ButtonGroup();
+				malebtn= new JRadioButton("MALE");
+				femalebtn= new JRadioButton("FEMALE");
+				group.add(malebtn);
+				group.add(femalebtn);
+				
+				//adding radiobuttons in buttongroup selects only one option
+				malebtn.setBounds(120,140,80,20);
+				add(malebtn);
+				femalebtn.setBounds(200,140,80,20);
+				add(femalebtn);
+				
+				//adding genderlabl
+				genderlbl=new JLabel("Gender:");
+				genderlbl.setBounds(20,140,100,20);
+				add(genderlbl);
+				
+				
+				//adding addresslbl
+				addresslbl = new JLabel("Address:");// object memory ma store hunxa but reference store hudina
+				addresslbl.setBounds(20, 180, 100, 20);// x=20,y=20,width=200, height=20
+				add(addresslbl); // added to jframe
+
+				// adding addresstxt
+				addresstxt = new JTextField(20);// 20 character
+				addresstxt.setBounds(120, 180, 200, 20);
+				add(addresstxt);
+				
+				//adding sublbl
+				sublbl=new JLabel("Choose Subject:");
+				sublbl.setBounds(20,220,100,20);
+				add(sublbl);
+				
+				//making checkboxes
+				java=new JCheckBox("JAVA");
+				python=new JCheckBox("PYTHON");
+				cplusplus=new  JCheckBox("C++");
+				
+				java.setBounds(120,220,80,20);
+				add(java);
+
+				python.setBounds(120,240,80,20);
+				add(python);
+
+				cplusplus.setBounds(120,260,80,20);
+				add(cplusplus);
+				
+				//adding programlbl
+				programlbl=new JLabel("Program:");
+				programlbl.setBounds(20,300,100,20);
+				add(programlbl);
+				
+				// adding combobox
+				String[] programs= {"BCA","CSIT","BBM","BIT","BITM"};
+				programcheck=new JComboBox<String>(programs);
+				programcheck.setBounds(120, 300, 80, 20);
+				add(programcheck);
+			       
+				
+				//adding aboutlbl
+				aboutlbl=new JLabel("About Me:");
+				aboutlbl.setBounds(20,340,100,20);
+				add(aboutlbl);
+				
+				//adding textarea
+				abouttxt = new JTextArea();
+				abouttxt.setLineWrap(true);
+				abouttxt.setWrapStyleWord(true);
+				
+				// Adding ScrollPane
+				JScrollPane scrollpane = new JScrollPane(abouttxt);
+				scrollpane.setBounds(120, 340, 200, 100);     
+				add(scrollpane);
+				
+				
+				//submit button
+
+				submitbtn=new JButton("Submit");
+				submitbtn.setBounds(120,460,100,30);
+			add(submitbtn);
+		
+		setVisible(true);// display the jframe on screen
+
+	}
+
+	public static void main(String[] args) {
+		new SwingComponentDemo();
+
+	}
+
+}

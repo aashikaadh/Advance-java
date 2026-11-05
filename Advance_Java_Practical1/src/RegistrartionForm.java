@@ -1,0 +1,200 @@
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class RegistrartionForm extends JFrame implements ActionListener{
+	
+	JLabel idlbl,firstlbl, lastlbl, emaillbl, genderlbl, addresslbl, sublbl, countrylbl, aboutlbl;
+	JTextField idtxt,firsttxt, lasttxt, emailtxt, addresstxt;
+	JRadioButton malebtn, femalebtn;
+	JCheckBox java, python, cplusplus;
+	JComboBox<String> country;
+	JTextArea abouttxt;
+	JButton submitbtn;
+	
+	public RegistrartionForm() {
+		setTitle("Student Registration Form");// gives the title to jframe
+//		setSize(400, 600);//300 px 500 px length and breadth
+		setResizable(false); // fixed size of jframe
+		setBounds(500, 100, 400, 600); // x=1100,y=200, width=400, height=600
+		setLayout(null);// by default layout is borderlayout
+		// Create components and add to some position
+		
+
+	    // Student ID
+	    idlbl = new JLabel("Student ID:");
+	    idlbl.setBounds(20, 20, 100, 25); 
+	    add(idlbl);
+
+	    idtxt = new JTextField(20);
+	    idtxt.setBounds(120, 20, 200, 25);
+	    add(idtxt);
+
+	    // First Name
+	    firstlbl = new JLabel("First Name:");
+	    firstlbl.setBounds(20, 60, 100, 25);
+	    add(firstlbl);
+
+	    firsttxt = new JTextField(20);
+	    firsttxt.setBounds(120, 60, 200, 25);
+	    add(firsttxt);
+
+	    // Last Name
+	    lastlbl = new JLabel("Last Name:");
+	    lastlbl.setBounds(20, 100, 100, 25);
+	    add(lastlbl);
+
+	    lasttxt = new JTextField(20);
+	    lasttxt.setBounds(120, 100, 200, 25);
+	    add(lasttxt);
+
+	    // Email
+	    emaillbl = new JLabel("Email:");
+	    emaillbl.setBounds(20, 140, 100, 25);
+	    add(emaillbl);
+
+	    emailtxt = new JTextField(20);
+	    emailtxt.setBounds(120, 140, 200, 25);
+	    add(emailtxt);
+
+	    // Gender
+	    genderlbl = new JLabel("Gender:");
+	    genderlbl.setBounds(20, 180, 100, 25);
+	    add(genderlbl); 
+
+	    malebtn = new JRadioButton("MALE");
+	    malebtn.setBounds(120, 180, 80, 25);
+	    add(malebtn);
+
+	    femalebtn = new JRadioButton("FEMALE");
+	    femalebtn.setBounds(200, 180, 100, 25);
+	    add(femalebtn);
+
+	    ButtonGroup group = new ButtonGroup();
+	    group.add(malebtn);
+	    group.add(femalebtn);
+
+	    // Address
+	    addresslbl = new JLabel("Address:");
+	    addresslbl.setBounds(20, 220, 100, 25);
+	    add(addresslbl);
+
+	    addresstxt = new JTextField(20);
+	    addresstxt.setBounds(120, 220, 200, 25);
+	    add(addresstxt);
+
+	    // Choose Subject
+	    sublbl = new JLabel("Choose Subject:");
+	    sublbl.setBounds(20, 260, 110, 25);
+	    add(sublbl);
+
+	    java = new JCheckBox("JAVA");
+	    java.setBounds(140, 260, 100, 25);
+	    add(java);
+
+	    python = new JCheckBox("PYTHON");
+	    python.setBounds(140, 285, 100, 25);
+	    add(python);
+
+	    cplusplus = new JCheckBox("C++");
+	    cplusplus.setBounds(140, 310, 100, 25);
+	    add(cplusplus);
+
+	    // Country
+	    countrylbl = new JLabel("Country:");
+	    countrylbl.setBounds(20, 345, 100, 25);
+	    add(countrylbl);
+
+	    String[] countries = {
+	        "Nepal", "India", "China", "Japan", "Argentina"
+	    };
+
+	    country = new JComboBox<String>(countries);
+	    country.setBounds(120, 345, 150, 25);
+	    add(country);
+
+	    // About Me
+	    aboutlbl = new JLabel("About Me:");
+	    aboutlbl.setBounds(20, 385, 100, 25);
+	    add(aboutlbl);
+
+	    abouttxt = new JTextArea();
+	    abouttxt.setLineWrap(true);
+	    abouttxt.setWrapStyleWord(true);
+
+	    JScrollPane scrollpane = new JScrollPane(abouttxt);
+	    scrollpane.setBounds(120, 385, 200, 80);
+	    add(scrollpane);
+
+	    // Submit Button
+	    submitbtn = new JButton("Submit");
+	    submitbtn.setBounds(120, 485, 100, 30);
+	    submitbtn.addActionListener(this);
+	    add(submitbtn);
+
+	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    setVisible(true);
+	}
+	    
+
+	public static void main(String[] args) {
+		new RegistrartionForm();
+
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String gender = "Not Selected";
+
+	    if (malebtn.isSelected())
+	        gender = "Male";
+	    else if (femalebtn.isSelected())
+	        gender = "Female";
+
+	    String subjects = "";
+
+	    if (java.isSelected())
+	        subjects += "Java ";
+
+	    if (python.isSelected())
+	        subjects += "Python ";
+
+	    if (cplusplus.isSelected())
+	        subjects += "C++ ";
+
+	    if (subjects.equals(""))
+	        subjects = "None";
+
+	    String info = "Student ID: " + idtxt.getText()
+	            + "\nFirst Name: " + firsttxt.getText()
+	            + "\nLast Name: " + lasttxt.getText()
+	            + "\nEmail: " + emailtxt.getText()
+	            + "\nGender: " + gender
+	            + "\nAddress: " + addresstxt.getText()
+	            + "\nSubjects: " + subjects
+	            + "\nCountry: " + country.getSelectedItem()
+	            + "\nAbout Me: " + abouttxt.getText();
+
+	    JOptionPane.showMessageDialog(
+	            this, info, "Student Information",
+	            JOptionPane.INFORMATION_MESSAGE);
+	}
+		
+	
+
+}
